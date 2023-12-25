@@ -1,0 +1,69 @@
+// Header.js
+
+import React from 'react';
+import './Header.css';
+
+const Header = () => {
+  return (
+    <div className="header">
+      <div className="summary">
+        <div className="title">Delicious Food, Delivered to You</div>
+        <div className="subtitle">
+          Choose your favorite meal from our broad selection of available meals and enjoy a delicious lunch or dinner at home.
+          <br />
+          All our meals are cooked with high-quality ingredients just in time and, of course, by experienced chefs!
+        </div>
+      </div>
+      <div className="logo">Your Logo</div>
+      <div className="nav">
+        <ul>
+          <li>Home</li>
+          <li>Products</li>
+          <li>Contact</li>
+        </ul>
+      </div>
+      <div className="cart">
+        <span>Cart</span>
+        <span className="cart-count">0</span>
+      </div>
+    </div>
+  );
+};
+
+export default Header;
+
+
+
+
+/* Header.css */
+
+.body {
+  margin: 0;
+  font-family: 'Arial', sans-serif; /* Adjust the font-family as needed */
+}
+
+.header {
+  display: flex;
+  flex-direction: column; /* Place items in a column layout */
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  padding: 15px;
+  background: url('./images/background.jpg') center/cover; /* Adjust the path and properties as needed */
+  color: #fff; /* You can adjust the text color */
+}
+
+.summary {
+  text-align: center; /* Center text within the summary div */
+}
+
+.title {
+  font-size: 32px; /* Adjust the font size as needed */
+  font-weight: bold;
+}
+
+.subtitle {
+  font-size: 14px; /* Adjust the font size as needed */
+  margin-top: 10px; /* Add some space between title and subtitle */
+}
+
+     
