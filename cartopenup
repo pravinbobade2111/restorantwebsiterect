@@ -1,0 +1,93 @@
+// Header.js
+
+import React, { useState } from 'react';
+import './Header.css';
+
+const Header = () => {
+  const foodItems = [
+    { name: 'Butter Chicken', price: 12.99 },
+    { name: 'Biryani', price: 10.99 },
+    { name: 'Paneer Tikka', price: 8.99 },
+    { name: 'Masala Dosa', price: 7.99 },
+    { name: 'Chole Bhature', price: 9.99 },
+  ];
+
+  const [cartOpen, setCartOpen] = useState(false);
+  const [cartContents, setCartContents] = useState([]);
+
+  const addToCart = (item, quantity) => {
+    const existingItemIndex = cartContents.findIndex((cartItem) => cartItem.name === item.name);
+
+    if (existingItemIndex !== -1) {
+      // If item is already in the cart, update the quantity
+      const updatedCart = [...cartContents];
+      updatedCart[existingItemIndex].quantity += quantity;
+      setCartContents(updatedCart);
+    } else {
+      // If item is not in the cart, add it
+      setCartContents((prevCart) => [...prevCart, { ...item, quantity }]);
+    }
+  };
+
+  return (
+    <div className="header">
+      <div className="summary">
+        <div className="title">Delicious Food, Delivered to You</div>
+        <div className="subtitle">
+          Choose your favorite meal from our broad selection of available meals and enjoy a delicious lunch or dinner at home.
+          <br />
+          All our meals are cooked with high-quality ingredients just in time and, of course, by experienced chefs!
+        </div>
+      </div>
+      <div className="menu">
+        {foodItems.map((item, index) => (
+          <div key={index} className="menu-item">
+            <div className="food-name">{item.name}</div>
+            <div className="food-price">${item.price.toFixed(2)}</div>
+            <form>
+              <label htmlFor={`quantity-${index}`}>Quantity:</label>
+              <input type="number" id={`quantity-${index}`} name={`quantity-${index}`} min="0" defaultValue="0" />
+              <button
+                type="button"
+                onClick={() => {
+                  const quantity = parseInt(document.getElementById(`quantity-${index}`).value, 10);
+                  if (quantity > 0) {
+                    addToCart(item, quantity);
+                  }
+                }}
+              >
+                Add +
+              </button>
+            </form>
+          </div>
+        ))}
+      </div>
+      <div className="cart-icon" onClick={() => setCartOpen(!cartOpen)}>
+        <span>Cart</span>
+        <span className="cart-count">{cartContents.length}</span>
+      </div>
+      {cartOpen && (
+        <div className="cart">
+          <div className="cart-contents">
+            {cartContents.map((cartItem, index) => (
+              <div key={index} className="cart-item">
+                <span>{cartItem.name}</span>
+                <span>Quantity: {cartItem.quantity}</span>
+                <span>${(cartItem.price * cartItem.quantity).toFixed(2)}</span>
+              </div>
+            ))}
+          </div>
+          <div className="cart-total">
+            <span>Total: ${cartContents.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2)}</span>
+          </div>
+          <div className="cart-buttons">
+            <button type="button">Close</button>
+            <button type="button">Order</button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default Header;
