@@ -40,3 +40,71 @@ const Header = () => {
 };
 
 export default Header;
+
+
+/* Header.css */
+
+.body {
+  margin: 0;
+  font-family: 'Arial', sans-serif; /* Adjust the font-family as needed */
+}
+
+.header {
+  display: flex;
+  flex-direction: column; /* Place items in a column layout */
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  padding: 15px;
+  background: url('./images/background.jpg') center/cover; /* Adjust the path and properties as needed */
+  color: #fff; /* You can adjust the text color */
+}
+
+.summary {
+  text-align: center; /* Center text within the summary div */
+}
+
+.title {
+  font-size: 32px; /* Adjust the font size as needed */
+  font-weight: bold;
+}
+
+.subtitle {
+  font-size: 14px; /* Adjust the font size as needed */
+  margin-top: 10px; /* Add some space between title and subtitle */
+}
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.menu-item {
+  text-align: center;
+  border: 1px solid #fff;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.food-name {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.food-price {
+  font-size: 14px;
+  margin-top: 5px;
+  color: #ffd700; /* Adjust the color of the price */
+}
+
+button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #ffd700; /* Adjust the background color of the button */
+  color: #333; /* Adjust the text color of the button */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
